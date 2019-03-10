@@ -13,8 +13,10 @@ import cx from "classnames"
 
 import demo from "./demo.png"
 import demoRetina from "./demo@2x.png"
+import demoVid from "./demo_vid_1.webm"
 
 import RetinaImage from "react-retina-image"
+import ReactPlayer from "react-player"
 
 import GitHubButton from "react-github-btn"
 
@@ -60,11 +62,22 @@ const IndexPage = () => (
         <div>
           <Header as="h2">A simple terminal UI for git, written in Go</Header>
         </div>
-        <Container>
+        <Container className="image">
           <RetinaImage src={[demo, demoRetina]} />
         </Container>
+        <Container className="image">
+          <ReactPlayer
+            url={demoVid}
+            playing
+            muted
+            loop
+            className="video"
+            width={null}
+            height={null}
+          />
+        </Container>
         <div>
-          <Header as="h2">A simple terminal UI for git, written in Go</Header>
+          <Header as="h2">blah</Header>
         </div>
       </Segment>
     </div>
