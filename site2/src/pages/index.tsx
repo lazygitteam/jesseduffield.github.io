@@ -11,6 +11,8 @@ import {
   Icon,
 } from "semantic-ui-react"
 
+import demo1 from "data/images/demo1"
+
 import GitHubButton from "react-github-btn"
 
 const IndexPage = ({ location }: LayoutProps) => (
@@ -23,6 +25,7 @@ const IndexPage = ({ location }: LayoutProps) => (
         items={menuItems}
         inverted
       />
+      <img src={demo1} />
       <GitHubButton
         href="https://github.com/jesseduffield/lazygit"
         data-icon="octicon-star"

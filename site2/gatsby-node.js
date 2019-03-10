@@ -117,7 +117,7 @@ exports.createPages = ({ graphql, actions }) => {
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
-      // images: [path.resolve(__dirname, 'src'), 'data/images'],
+      data: [path.resolve(__dirname, 'src'), 'data'],
     },
   })
 }
