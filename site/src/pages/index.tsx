@@ -1,7 +1,5 @@
 import * as React from "react"
-import { Link } from "gatsby"
-import HeaderMenu from "../components/HeaderMenu/HeaderMenu"
-import { withLayout, LayoutProps, menuItems } from "../components/Layout"
+
 import {
   Button,
   Segment,
@@ -11,46 +9,47 @@ import {
   Icon,
 } from "semantic-ui-react"
 
-import demo1 from "data/images/demo1"
+import cx from "classnames"
+
+import demo1 from "./demo1.png"
 
 import GitHubButton from "react-github-btn"
 
-const IndexPage = ({ location }: LayoutProps) => (
-  <div>
-    {/* Master head */}
-    <Segment vertical inverted textAlign="center" className="masthead">
-      <HeaderMenu
-        Link={Link}
-        pathname={location.pathname}
-        items={menuItems}
-        inverted
-      />
-      <img src={demo1} />
-      <GitHubButton
-        href="https://github.com/jesseduffield/lazygit"
-        data-icon="octicon-star"
-        data-size="large"
-        data-show-count="true"
-        aria-label="Star jesseduffield/lazygit on GitHub"
-      >
-        Star
-      </GitHubButton>
-      <GitHubButton
-        href="https://github.com/jesseduffield"
-        data-size="large"
-        data-show-count="true"
-        aria-label="Follow @jesseduffield on GitHub"
-      >
-        Follow @jesseduffield
-      </GitHubButton>
-      <GitHubButton
-        href="https://github.com/jesseduffield/lazygit/archive/master.zip"
-        data-icon="octicon-cloud-download"
-        data-size="large"
-        aria-label="Download jesseduffield/lazygit on GitHub"
-      >
-        Download
-      </GitHubButton>
+const GithubButtons = () => (
+  <Header>
+    <GitHubButton
+      href="https://github.com/jesseduffield/lazygit"
+      data-icon="octicon-star"
+      data-size="large"
+      data-show-count="true"
+      aria-label="Star jesseduffield/lazygit on GitHub"
+    >
+      Star
+    </GitHubButton>
+    <GitHubButton
+      href="https://github.com/jesseduffield"
+      data-size="large"
+      data-show-count="true"
+      aria-label="Follow @jesseduffield on GitHub"
+    >
+      Follow @jesseduffield
+    </GitHubButton>
+    <GitHubButton
+      href="https://github.com/jesseduffield/lazygit/archive/master.zip"
+      data-icon="octicon-cloud-download"
+      data-size="large"
+      aria-label="Download jesseduffield/lazygit on GitHub"
+    >
+      Download
+    </GitHubButton>
+  </Header>
+)
+
+const IndexPage = () => (
+  <div className="container">
+    <Segment>
+      <GithubButtons />
+
       <Container text>
         <Header inverted as="h1">
           lazygit
@@ -58,10 +57,12 @@ const IndexPage = ({ location }: LayoutProps) => (
         <Header inverted as="h2">
           A simple terminal UI for git, written in Go
         </Header>
-        <Button primary size="huge">
+        {/* <Button primary size="huge">
           Get started!
-        </Button>
-        <script src="https://asciinema.org/a/14.js" id="asciicast-14" async />
+        </Button> */}
+      </Container>
+      <Container content>
+        <img src={demo1} />
       </Container>
     </Segment>
 
@@ -148,4 +149,4 @@ const IndexPage = ({ location }: LayoutProps) => (
   </div>
 )
 
-export default withLayout(IndexPage)
+export default IndexPage

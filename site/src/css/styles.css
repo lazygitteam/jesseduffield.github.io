@@ -1,4 +1,4 @@
-.hidden.menu {
+/* .hidden.menu {
   display: none;
 }
 
@@ -16,7 +16,7 @@
 }
 
 .masthead h1.ui.header {
-  margin-top: 3em;
+  margin-top: 1em;
   margin-bottom: 0;
   font-size: 4em;
   font-weight: normal;
@@ -73,7 +73,11 @@
   display: none;
 }
 
-@media only screen and (max-width: 700px) {
+.ui.primary.inverted.segment {
+  background: linear-gradient(135deg, #c4bac8 0%, #59446f 100%);
+}
+
+@media only screen and (max-width: 900px) {
   .masthead.segment {
     min-height: 350px;
   }
@@ -87,7 +91,7 @@
     margin-top: 0.5em;
     font-size: 1.5em;
   }
-}
+} */
 
 /* Code blocks (Fix a strange bug with prismjs) */
 pre {
@@ -96,4 +100,15 @@ pre {
   overflow: auto;
   border-radius: 0.3em;
   background: #272822;
+}
+
+/* linear-gradient(135deg, #b470ef 0%, #bda0ce 100%) */
+
+/* my styles */
+
+.container {
+  max-width: 900px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
 }
