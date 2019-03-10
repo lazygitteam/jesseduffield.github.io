@@ -11,12 +11,12 @@ import {
 
 import cx from "classnames"
 
-import demo1 from "./demo1.png"
+import demo1 from "./demo3.png"
 
 import GitHubButton from "react-github-btn"
 
 const GithubButtons = () => (
-  <Header>
+  <Header className="banner">
     <GitHubButton
       href="https://github.com/jesseduffield/lazygit"
       data-icon="octicon-star"
@@ -35,7 +35,7 @@ const GithubButtons = () => (
       Follow @jesseduffield
     </GitHubButton>
     <GitHubButton
-      href="https://github.com/jesseduffield/lazygit/archive/master.zip"
+      href="https://github.com/jesseduffield/lazygit/releases"
       data-icon="octicon-cloud-download"
       data-size="large"
       aria-label="Download jesseduffield/lazygit on GitHub"
@@ -46,106 +46,28 @@ const GithubButtons = () => (
 )
 
 const IndexPage = () => (
-  <div className="container">
-    <Segment>
-      <GithubButtons />
+  <div className="background">
+    <div className="container">
+      <Segment>
+        <GithubButtons />
 
-      <Container text>
-        <Header inverted as="h1">
-          lazygit
-        </Header>
-        <Header inverted as="h2">
-          A simple terminal UI for git, written in Go
-        </Header>
-        {/* <Button primary size="huge">
-          Get started!
-        </Button> */}
-      </Container>
-      <Container content>
-        <img src={demo1} />
-      </Container>
-    </Segment>
-
-    {/* About this starter */}
-    <Segment vertical className="stripe">
-      <Grid stackable verticalAlign="middle" className="container">
-        <Grid.Row>
-          <Grid.Column width="8">
-            <Header>Lorem ipsum</Header>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro
-              laudantium ad, quae, perspiciatis ipsa distinctio.
-            </p>
-            <Header>Dolor sit amet</Header>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro
-              laudantium ad, quae, perspiciatis ipsa distinctio.
-            </p>
-          </Grid.Column>
-          <Grid.Column width="6" floated="right">
-            {/* TODO replace with a pretty GIF */}
-            <Header>Lorem ipsum</Header>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro
-              laudantium ad, quae, perspiciatis ipsa distinctio.
-            </p>
-            <Header>Dolor sit amet</Header>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro
-              laudantium ad, quae, perspiciatis ipsa distinctio.
-            </p>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
-    </Segment>
-
-    {/* Key features */}
-    <Segment vertical className="stripe alternate feature">
-      <Grid
-        columns="3"
-        textAlign="center"
-        divided
-        relaxed
-        stackable
-        className="container"
-      >
-        <Grid.Row>
-          <Grid.Column>
-            <Header icon>
-              <Icon name="wizard" />A kind of magic!
-            </Header>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas
-              eaque at quae cupiditate aspernatur quibusdam! Distinctio quod
-              non, harum dolorum earum molestias, beatae expedita aliquam
-              dolorem asperiores nemo amet quaerat.
-            </p>
-          </Grid.Column>
-          <Grid.Column>
-            <Header icon>
-              <Icon name="wizard" />A kind of magic!
-            </Header>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas
-              eaque at quae cupiditate aspernatur quibusdam! Distinctio quod
-              non, harum dolorum earum molestias, beatae expedita aliquam
-              dolorem asperiores nemo amet quaerat.
-            </p>
-          </Grid.Column>
-          <Grid.Column>
-            <Header icon>
-              <Icon name="wizard" />A kind of magic!
-            </Header>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas
-              eaque at quae cupiditate aspernatur quibusdam! Distinctio quod
-              non, harum dolorum earum molestias, beatae expedita aliquam
-              dolorem asperiores nemo amet quaerat.
-            </p>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
-    </Segment>
+        <div>
+          <Header as="h1">lazygit</Header>
+        </div>
+        <div>
+          <Header as="h2">A simple terminal UI for git, written in Go</Header>
+        </div>
+        <Container content>
+          <img src={demo1} className="screenshot" />
+        </Container>
+        <div>
+          <Header as="h2">A simple terminal UI for git, written in Go</Header>
+        </div>
+        <Container content>
+          <img src={demo1} />
+        </Container>
+      </Segment>
+    </div>
   </div>
 )
 
