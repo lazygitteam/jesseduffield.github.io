@@ -11,7 +11,10 @@ import {
 
 import cx from "classnames"
 
-import demo1 from "./demo3.png"
+import demo from "./demo.png"
+import demoRetina from "./demo@2x.png"
+
+import RetinaImage from "react-retina-image"
 
 import GitHubButton from "react-github-btn"
 
@@ -57,15 +60,12 @@ const IndexPage = () => (
         <div>
           <Header as="h2">A simple terminal UI for git, written in Go</Header>
         </div>
-        <Container content>
-          <img src={demo1} className="screenshot" />
+        <Container>
+          <RetinaImage src={[demo, demoRetina]} />
         </Container>
         <div>
           <Header as="h2">A simple terminal UI for git, written in Go</Header>
         </div>
-        <Container content>
-          <img src={demo1} />
-        </Container>
       </Segment>
     </div>
   </div>

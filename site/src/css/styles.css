@@ -62,14 +62,3 @@ h2 {
 .image {
   margin-top: 3rem;
 }
-
-.screenshot {
-  transform: scale(0.5);
-}
-
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  /* Retina-specific stuff here */
-  .screenshot {
-    transform: scale(1);
-  }
-}
