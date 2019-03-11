@@ -13,7 +13,9 @@ import cx from "classnames"
 
 import demo from "./demo.png"
 import demoRetina from "./demo@2x.png"
-import demoVid from "./demo_vid_1.webm"
+// import demoVid from "./demo_vid_1.webm"
+
+import demoVid from "./web_demo_ignore.webm"
 
 import RetinaImage from "react-retina-image"
 import ReactPlayer from "react-player"
@@ -51,9 +53,15 @@ const GithubButtons = () => (
   </Header>
 )
 
-const LeftBubble = ({ children }: { children: string }) => (
-  <div className="bubble-left">
-    <p className="speech">{children}</p>
+const LeftBubble = ({
+  children,
+  className,
+}: {
+  children: string
+  className?: string,
+}) => (
+  <div className="bubble-left hvr-bubble-float-left">
+    <p className={cx("speech", className)}>{children}</p>
   </div>
 )
 
@@ -81,7 +89,7 @@ const IndexPage = () => (
           <div className="bubble-container">
             <LeftBubble>stage a file in a single keystroke</LeftBubble>
             <LeftBubble>get a file out of my way</LeftBubble>
-            <LeftBubble>
+            <LeftBubble className="active">
               rebase onto master without stashing anything or leaving my current
               branch
             </LeftBubble>
