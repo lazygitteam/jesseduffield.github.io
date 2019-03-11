@@ -154,6 +154,10 @@ body {
   display: inline-block;
 }
 
+.video {
+  background-color: rgb(0, 2, 15);
+}
+
 /* from https://github.com/IanLunn/Hover/blob/master/css/hover.css */
 
 /* Bubble Float Left */
@@ -188,14 +192,17 @@ body {
 
 .hvr-bubble-float-left:hover,
 .hvr-bubble-float-left:focus,
-.hvr-bubble-float-left:active {
+.hvr-bubble-float-left:active,
+.hvr-bubble-float-left.active {
   -webkit-transform: translateX(10px);
-  transform: translateX(10px);
+  transform: translateX(10px) translateY(-5px);
+  box-shadow: 1px 1px 2px grey;
 }
 
 .hvr-bubble-float-left:hover:before,
 .hvr-bubble-float-left:focus:before,
-.hvr-bubble-float-left:active:before {
+.hvr-bubble-float-left:active:before,
+.hvr-bubble-float-left.active:before {
   -webkit-transform: translateX(-10px);
   transform: translateX(-10px);
 }

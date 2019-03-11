@@ -1,4 +1,5 @@
 import * as React from "react"
+import { withState } from "recompose"
 
 import {
   Button,
@@ -15,7 +16,18 @@ import demo from "./demo.png"
 import demoRetina from "./demo@2x.png"
 // import demoVid from "./demo_vid_1.webm"
 
-import demoVid from "./web_demo_ignore.webm"
+import fastStagingVid from "./web_demo_fast_staging.webm"
+import deletingVid from "./web_demo_deleting.webm"
+import openPrVid from "./web_demo_pull_request.webm"
+import lineStagingVid from "./web_demo_staging_by_lines.webm"
+import amendVid from "./web_demo_amending.webm"
+import ignoreVid from "./web_demo_ignore.webm"
+import mergingVid from "./web_demo_merging.webm"
+import rebasingVid from "./web_demo_rebasing_real.webm"
+import interactiveRebaseVid from "./web_demo_interactive_rebasing.webm"
+import cherryPickVid from "./web_demo_cherry_picking.webm"
+import oldCommitsVid from "./web_demo_old_commit_files.webm"
+import mouseVid from "./web_demo_clicks.webm"
 
 import RetinaImage from "react-retina-image"
 import ReactPlayer from "react-player"
@@ -53,19 +65,92 @@ const GithubButtons = () => (
   </Header>
 )
 
+const examples = [
+  {
+    bubbleText: "stage a file in a single keystroke",
+    description: "",
+    path: fastStagingVid,
+  },
+  {
+    bubbleText: "get a file out of my way",
+    description: "",
+    path: deletingVid,
+  },
+  {
+    bubbleText:
+      "rebase onto master without stashing anything or leaving my current branch",
+    description: "",
+    path: rebasingVid,
+  },
+  {
+    bubbleText: "open a pull request from my terminal",
+    description: "",
+    path: openPrVid,
+  },
+  {
+    bubbleText: "stage a file line-by-line",
+    description: "",
+    path: lineStagingVid,
+  },
+  {
+    bubbleText: "amend an old commit with new changes",
+    description: "",
+    path: amendVid,
+  },
+  {
+    bubbleText: "ignore a file in one keystroke",
+    description: "",
+    path: ignoreVid,
+  },
+  { bubbleText: "resolve merge conflicts", description: "", path: mergingVid },
+  {
+    bubbleText: "interactive rebase without manually editing a TODO file",
+    description: "",
+    path: interactiveRebaseVid,
+  },
+  {
+    bubbleText: "cherry pick commits from one branch to another",
+    description: "",
+    path: cherryPickVid,
+  },
+  {
+    bubbleText: "checkout an old version of a file",
+    description: "",
+    path: oldCommitsVid,
+  },
+  {
+    bubbleText: "stage and unstage files with my mouse",
+    description: "",
+    path: mouseVid,
+  },
+]
+
 const LeftBubble = ({
   children,
+  onClick,
   className,
+  active,
 }: {
   children: string
-  className?: string,
+  className?: string
+  onClick: () => void
+  active?: boolean,
 }) => (
-  <div className="bubble-left hvr-bubble-float-left">
+  <div
+    className={cx("bubble-left", "hvr-bubble-float-left", { active })}
+    onClick={onClick}
+  >
     <p className={cx("speech", className)}>{children}</p>
   </div>
 )
 
-const IndexPage = () => (
+const IndexPage = ({
+  currentVid,
+  setCurrentVid,
+}: {
+  currentVid: string
+  setCurrentVid: (vid: string) => void,
+}) => (
   <div className="background">
     <div className="container">
       <Segment>
@@ -87,47 +172,42 @@ const IndexPage = () => (
 
         <div className="use-case-container">
           <div className="bubble-container">
-            <LeftBubble>stage a file in a single keystroke</LeftBubble>
-            <LeftBubble>get a file out of my way</LeftBubble>
-            <LeftBubble className="active">
-              rebase onto master without stashing anything or leaving my current
-              branch
-            </LeftBubble>
-            <LeftBubble>open a pull request from my terminal</LeftBubble>
-            <LeftBubble>stage a file line-by-line</LeftBubble>
-            <LeftBubble>amend an old commit with new changes</LeftBubble>
-            <LeftBubble>ignore a file in one keystroke</LeftBubble>
-            <LeftBubble>resolve merge conflicts</LeftBubble>
-            <LeftBubble>
-              interactive rebase without manually editing a TODO file
-            </LeftBubble>
-            <LeftBubble>
-              cherry pick commits from one branch to another
-            </LeftBubble>
-            <LeftBubble>checkout an old version of a file</LeftBubble>
+            {examples.map((example) => (
+              <LeftBubble
+                key={example.path}
+                onClick={() => setCurrentVid(example.path)}
+                active={currentVid === example.path}
+              >
+                {example.bubbleText}
+              </LeftBubble>
+            ))}
           </div>
 
           <div className="video-container">
             <Container className="image">
               <ReactPlayer
-                url={demoVid}
+                url={currentVid}
                 playing
                 muted
                 loop
                 className="video"
-                width={null}
-                height={null}
+                width={838}
+                height={522}
               />
             </Container>
           </div>
         </div>
 
         <div>
-          <Header as="h2">blah</Header>
+          <Header as="h2">
+            This website is a work in progress. Copyright 2019 Jesse Duffield
+          </Header>
         </div>
       </Segment>
     </div>
   </div>
 )
 
-export default IndexPage
+export default withState("currentVid", "setCurrentVid", fastStagingVid)(
+  IndexPage,
+)
