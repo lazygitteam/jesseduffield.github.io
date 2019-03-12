@@ -33,7 +33,10 @@ import RetinaImage from "react-retina-image"
 import ReactPlayer from "react-player"
 
 // import GitHubButton from "react-github-btn"
-import { text } from "@storybook/addon-knobs"
+
+import favicon from "./fav/favicon/ms-icon-310x310.png"
+import faviconSmall from "./fav/favicon/favicon-32x32.png"
+import { Helmet } from "react-helmet"
 
 const GithubButtons = () => (
   <Header className="banner">
@@ -151,61 +154,86 @@ const IndexPage = ({
   currentVid: string
   setCurrentVid: (vid: string) => void,
 }) => (
-  <div className="background">
-    <div className="container">
-      <Segment>
-        <GithubButtons />
+  <>
+    <Helmet
+      title="Lazygit"
+      meta={[
+        {
+          name: "description",
+          content: "A simple terminal UI for git, written in Go",
+        },
+      ]}
+      link={[
+        {
+          rel: "shortcut icon",
+          type: "image/png",
+          href: favicon,
+          sizes: "310x310",
+        },
+        {
+          rel: "shortcut icon",
+          type: "image/png",
+          href: faviconSmall,
+          sizes: "32x32",
+        },
+      ]}
+    />
+    <div className="background">
+      <div className="container">
+        <Segment>
+          <GithubButtons />
 
-        <div>
-          <Header as="h1">lazygit</Header>
-        </div>
-        <div>
-          <Header as="h2">A simple terminal UI for git, written in Go</Header>
-        </div>
-        <Container className="image">
-          <RetinaImage src={[demo, demoRetina]} />
-        </Container>
+          <div>
+            <Header as="h1">lazygit</Header>
+          </div>
+          <div>
+            <Header as="h2">A simple terminal UI for git, written in Go</Header>
+          </div>
+          <Container className="image">
+            <RetinaImage src={[demo, demoRetina]} />
+          </Container>
 
-        <div className="bubble">
-          <p className="speech big">I want to...</p>
-        </div>
-
-        <div className="use-case-container">
-          <div className="bubble-container">
-            {examples.map((example) => (
-              <LeftBubble
-                key={example.path}
-                onClick={() => setCurrentVid(example.path)}
-                active={currentVid === example.path}
-              >
-                {example.bubbleText}
-              </LeftBubble>
-            ))}
+          <div className="bubble">
+            <p className="speech big">I want to...</p>
           </div>
 
-          <div className="video-container">
-            <Container className="image">
-              <ReactPlayer
-                url={currentVid}
-                playing
-                muted
-                loop
-                className="video"
-                width={838}
-                height={522}
-              />
-            </Container>
-          </div>
-        </div>
+          <div className="use-case-container">
+            <div className="bubble-container">
+              {examples.map((example) => (
+                <LeftBubble
+                  key={example.path}
+                  onClick={() => setCurrentVid(example.path)}
+                  active={currentVid === example.path}
+                >
+                  {example.bubbleText}
+                </LeftBubble>
+              ))}
+            </div>
 
-        <div>
-          <Header as="h2">
-            This website is a work in progress. Copyright 2019 Jesse Duffield
-          </Header>
-        </div>
-      </Segment>
+            <div className="video-container">
+              <Container className="image">
+                <ReactPlayer
+                  url={currentVid}
+                  playing
+                  muted
+                  loop
+                  className="video"
+                  width={838}
+                  height={522}
+                />
+              </Container>
+            </div>
+          </div>
+
+          <div>
+            <Header as="h2">
+              This website is a work in progress. Copyright 2019 Jesse Duffield
+            </Header>
+          </div>
+        </Segment>
+      </div>
     </div>
-  </div>
+  </>
 )
 
 export default withState("currentVid", "setCurrentVid", fastStagingVid)(
